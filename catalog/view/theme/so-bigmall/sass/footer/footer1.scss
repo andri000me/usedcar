@@ -1,0 +1,204 @@
+
+//** simple and lightweight mixin library for Sass **
+//-- url : http://bourbon.io/docs ---
+@import 'bourbon/bourbon';
+
+//** Mixins for Rem Font Sizing **
+//-- url : http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+@import 'utilities/rem';
+
+//** Variables for responsive design in bootstrap with sass **
+//-- url : https://gist.github.com/webinfinita/11407836
+@import 'utilities/bootstrap_breakpoints';
+
+//** Makes supporting both left-to-right (LTR) and right-to-left (RTL) easy.**
+//-- url : https://github.com/tysonmatanich/directional-scss
+@import 'utilities/directional';
+
+//Mixins utilities
+@import 'utilities/theme_variables';
+@import 'utilities/utilities';
+
+/* ================================================================================ */
+
+/*.footer-container{
+	margin-top: 40px;
+}*/
+.common-home{
+
+}
+.typefooter-1{
+	margin-top: 40px;
+	/* GENERAL */
+	.module .modtitle{
+       	font-size: 18px; color: #222;
+	    line-height: 40px;    
+	    font-weight: 500;
+	    text-transform: capitalize;   
+	    margin: 0 0 5px 0;          
+	}
+	.box-footer{	
+		margin-top: 10px;	
+		.modcontent{
+			ul.menu{
+				li{		        
+		          a{
+		            border: 0 none;		            
+		           	color: #666;
+		            padding: 0;		    
+		            font-weight: 400; 
+		            line-height: 33px;  
+		            position: relative;		       
+		            display: inline-block;
+		            
+		          }		    
+		        }
+			}
+		}
+	}
+	
+	.footer-top{
+
+	}
+
+	.footer-middle{
+		padding-top: 20px; padding-bottom: 35px;
+		margin: 0;
+		border-top: 1px solid #878787;
+		border-bottom: 1px solid #878787;
+		.col-left{ padding-#{$left}: 0; }
+		.col-right{ padding-#{$right}: 0; padding-top: 10px; }
+	}
+	
+	.newsletter-footer1{
+	    .newsletter{
+
+	      .title-block{  
+	        .page-heading{           
+	          font-size: 18px; color: #222;
+	          line-height: 40px;    
+	          font-weight: 500;
+	          text-transform: capitalize;  margin-bottom: 5px; 
+	        }
+	        .promotext{
+
+	        }
+	      }
+	      .block_content{ margin: 20px 0;
+	        form.signup{
+	          display: block;
+	          margin: 0;
+	          .form-group{
+	            position: relative;
+	            .input-box{
+	    
+	            }
+	            .subcribe{
+	              position: absolute;
+	              top: 0;
+	              #{$right}: 0;
+	            }
+
+	            input.form-control{
+	            	border-radius: 5px;
+	              height: 46px;
+	              line-height: 46px;
+	              width: 100%;
+	              box-shadow: none;
+	              padding: side-values(0 0 0 20px);
+	              border: 1px solid #e5e5e5;           
+	              background-color: #fff;    
+	              &::-moz-placeholder {
+	                      color: #666;
+	                        opacity: 1; 
+	                    }
+	                    &:-ms-input-placeholder { color: #666; } 
+	                    &::-webkit-input-placeholder  { color: #666; } 
+	                      &:focus{
+	                          z-index: 0;
+	                      }
+	            }
+	          }
+
+	          .subcribe button{       
+	            border: 0 none;
+	            color: #fff;
+	            font-weight: 400;
+	            font-size: 14px;
+	            height: 46px;
+	            line-height: 46px;
+	            padding: 0 17px;    
+	            text-transform: uppercase;
+	            border-bottom-#{$right}-radius: 5px;
+	            border-top-#{$right}-radius: 5px;
+	            &:hover{
+	             
+	            }
+	          }
+	        }
+	      }
+	    }
+	}
+
+	.socials-w{
+		h2{
+			 font-size: 18px; color: #222;
+	          line-height: 40px;    
+	          font-weight: 500;
+	          text-transform: capitalize; 
+		}
+	}
+	.socials{
+		float: $left;
+		li{
+			position: relative;
+			float: $left;
+			margin-#{$right}: 11px;
+		
+			a{
+				color: #666;
+			    font-size: 14px;
+			    width: 42px; height: 42px;
+			    line-height: 40px;
+			    text-align: center;
+			    background-color: #fff; border: 1px solid #e5e5e5;
+			    border-radius: 5px;
+				display: block;
+			    span{
+			    	display: none;
+			    }
+			    &:hover{
+			    	color: #fff;
+			    }
+			}
+			
+		}
+	}
+
+	.box-sites{
+		ul li{
+			margin-bottom: 10px; line-height: 33px;
+			img{
+				margin-#{$right}: 16px;
+			}
+		}
+	}
+
+
+	/* FOOTER BOTTOM */
+
+	.footer-bottom{
+	   	padding: 15px 0;
+	    .payment-w{
+	    	text-align: $right;
+	    }
+
+	 
+
+	}
+}
+
+
+@media (min-width: 1200px) and (max-width: 1649px){
+
+}

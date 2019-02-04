@@ -1,0 +1,281 @@
+
+//** simple and lightweight mixin library for Sass **
+//-- url : http://bourbon.io/docs ---
+@import 'bourbon/bourbon';
+
+//** Mixins for Rem Font Sizing **
+//-- url : http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
+@import 'utilities/rem';
+
+//** Variables for responsive design in bootstrap with sass **
+//-- url : https://gist.github.com/webinfinita/11407836
+@import 'utilities/bootstrap_breakpoints';
+
+//** Makes supporting both left-to-right (LTR) and right-to-left (RTL) easy.**
+//-- url : https://github.com/tysonmatanich/directional-scss
+@import 'utilities/directional';
+
+//Mixins utilities
+@import 'utilities/theme_variables';
+@import 'utilities/utilities';
+
+/* ================================================================================ */
+
+/*.footer-container{
+  margin-top: 40px;
+}*/
+.common-home{
+
+}
+footer.typefooter-2 .so-page-builder .container{
+  padding: 0;
+}
+.typefooter-2{
+  margin-top: 20px;
+  background-color: #f5f5f5;
+  /* GENERAL */
+  .module .modtitle{
+        font-size: 16px; color: #222;
+      line-height: 40px;    
+      font-weight: 700;
+      text-transform: uppercase;   
+      margin: 0 0 20px 0;    
+      position: relative;
+      &:after{
+        position: absolute;
+        content: "";
+        width: 70px; height: 2px;
+        bottom: 0; #{$left}:0;
+      }      
+  }
+  .box-footer{  
+    margin-top: 0px; 
+    .modcontent{
+      ul.menu{
+        li{           
+              a{
+                border: 0 none;               
+                color: #666;
+                padding: 0;       
+                font-weight: 400; 
+                line-height: 30px;  
+                position: relative;          
+                display: inline-block;
+                
+              }       
+            }
+      }
+    }
+  }
+  
+  .footer-top{
+    background-color: #facb08; padding: 8px 0;
+    .container.ftop{
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+
+  .footer-middle{
+    padding: 43px 0 45px 0;
+    
+  }
+  
+  .newsletter-footer2{
+      .newsletter{
+
+        .title-block{  
+          width: 50%; float: $left; color: #1c1c1c;
+          position: relative;
+          padding-#{$left}: 50px; 
+          &:before{
+            position: absolute;
+            content: "\f1d9";
+            font-family: "FontAwesome";
+            font-size: 40px; color: #1c1c1c;
+            top: 10px;
+            #{$left}: -15px;
+          }
+          .page-heading{           
+            font-size: 18px; 
+            line-height: 20px;    
+            font-weight: 700;
+            text-transform: uppercase;  margin-bottom: 0; margin-top: 3px;
+            
+          }
+          .promotext{
+
+          }
+        }
+        .block_content{ margin: 20px 0;
+          margin-#{$left}: 50%;
+          form.signup{
+            display: block;
+            margin: 0;
+            .form-group{
+              position: relative;
+              .input-box{
+      
+              }
+              .subcribe{
+                position: absolute;
+                top: 0;
+                #{$right}: 0;
+              }
+
+              input.form-control{
+                border-radius: 5px;
+                height: 44px;
+                line-height: 44px;
+                width: 100%;
+                box-shadow: none;
+                padding: side-values(0 0 0 20px);
+                border: none;           
+                background-color: #fff;    
+                &::-moz-placeholder {
+                        color: #666;
+                          opacity: 1; 
+                      }
+                      &:-ms-input-placeholder { color: #666; } 
+                      &::-webkit-input-placeholder  { color: #666; } 
+                        &:focus{
+                            z-index: 0;
+                        }
+              }
+            }
+
+            .subcribe button{       
+              border: 0 none;
+              color: #fff;
+              font-weight: 400;
+              font-size: 14px;
+              height: 44px;
+              line-height: 44px;
+              padding: 0 17px;    
+              text-transform: uppercase;
+              border-bottom-#{$right}-radius: 5px;
+              border-top-#{$right}-radius: 5px;
+              &:hover{
+               
+              }
+            }
+          }
+        }
+      }
+  }
+
+  .socials-w{ float: $right; margin-#{$right}: -15px; margin-top: 22px;
+    h2{
+        font-size: 18px; color: #1c1c1c;
+        line-height: 40px;    
+        font-weight: 700;
+        text-transform: uppercase; 
+        float: $left;
+        margin-#{$right}: 15px;
+    }
+  }
+  .socials{
+    float: $left;
+    li{
+      position: relative;
+      float: $left;
+      margin-#{$left}: 9px;
+      &.facebook a{
+        background-color: #3b5998;
+      }
+      &.twitter a{
+        background-color: #55acee;
+      }
+      &.google_plus a{
+        background-color: #dc4e41;
+      }
+      &.pinterest a{
+        background-color: #cb2027;
+      }
+      &.youtube a{
+        background-color: #ff0000;
+      }
+      a{
+        color: #fff;
+          font-size: 20px;
+          width: 36px; height: 36px;
+          line-height: 36px;
+          text-align: center;
+          background-color: #666; 
+          border-radius: 100%;
+          display: block;
+          span{
+            display: none;
+          }
+          &:hover{
+            color: #fff;
+          }
+      }
+      
+    }
+  }
+
+  .infos-footer{
+    ul{
+      margin-top: 10px;
+      li{
+        //background: url(#{$imgPath}icon/icon-contact.png) no-repeat $left top;  
+          font-size: 14px;
+          line-height: 23px;
+          list-style: outside none none;
+          padding: side-values(10px 10px 10px 30px);
+          text-transform: capitalize;
+          position: relative;
+          &:before{
+            position: absolute; font-family: "FontAwesome";
+            content: "\f041"; top: 10px; #{$left}: 2px;
+            font-size: 20px; color: #444;
+          }
+          a{
+            color: #666;
+            font-size: 14px;
+            transition: all 0.3s ease 0s;
+          }
+          &.adres {
+            //background-position: $left 14px;
+            &:before{ content: "\f041"; top: 20px; font-size: 23px; } 
+          }
+          &.phone {
+              //background-position: $left -55px;
+              &:before{ content: "\f095"; }
+          }
+          &.mail {
+              //background-position: $left -100px;
+              &:before{ content: "\f003"; }
+          }
+          &.time {
+              //background-position: $left -144px;
+              &:before{ content: "\f017"; }
+          }
+      }
+    }
+  }
+
+
+  /* FOOTER BOTTOM */
+
+  .footer-bottom{ background-color: #fff;
+      padding: 20px 0;
+      .payment-w{
+        text-align: $right;
+      }
+      .copyright{
+        margin-top: 2px;
+      }
+    .container{
+      
+    }
+   
+
+  }
+}
+
+
+@media (min-width: 1200px) and (max-width: 1649px){
+
+}

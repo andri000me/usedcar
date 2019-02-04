@@ -1,0 +1,71 @@
+
+footer #collapse-footer{
+	display: block;
+}
+.footer-container{
+	clear: both;
+}
+footer .so-page-builder .container{
+    padding: 0 15px;
+}
+footer .copyright a{
+	color: $linkColor;
+}
+footer a:hover{
+	color: $linkColor;
+}
+
+.typefooter-1 .socials li a:hover{
+	background-color: $background; border-color: $background;
+}
+.typefooter-1 .footer-top{
+	background-color: $background;
+}
+
+.typefooter-1 .box-footer .modcontent ul.menu li a:hover{
+	color: $linkColor;
+}
+.typefooter-1 .newsletter-footer1 .newsletter .block_content form.signup .subcribe button{
+	background-color: $background;
+	&:hover{
+		background-color: darken($background,10%);
+	}
+}
+
+
+
+.typefooter-2 .socials li a:hover{
+	color: $background;
+}
+
+.typefooter-2 .box-footer .modcontent ul.menu li a:hover{
+	color: $linkColor;
+}
+.typefooter-2 .newsletter-footer2 .newsletter .block_content form.signup .subcribe button{
+	background-color: $background;
+	&:hover{
+		background-color: darken($background,10%);
+	}
+}
+.typefooter-2 .module .modtitle:after{
+	background-color: $background;
+}
+
+
+
+
+.typefooter-3 .socials li a:hover{
+	color: $background;
+}
+
+.typefooter-3 .box-footer .modcontent ul.menu li a:hover{
+	color: $linkColor;
+}
+
+.typefooter-3 .module .modtitle:after{
+	background-color: $background;
+}
+.typefooter-3 .socials li a:hover{
+	background-color: $background;
+	border-color: $background;
+}
