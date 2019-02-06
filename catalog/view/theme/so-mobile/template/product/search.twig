@@ -3,6 +3,11 @@
 	border: solid 1px silver !important;
 	background-color: white  !important;
 }
+.aabcustomhide {
+	border: solid 1px silver !important;
+	background-color: white  !important;
+	
+}
  
 </style>
 {{ header }}
@@ -130,9 +135,15 @@
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
 				<div class="form-group input-group"> 
-					<input type="text" maxlength="12" class="form-control aabcustomsearch" onpaste="return false;" onkeypress="javascript:return isNumber(event)" onkeyup="numberOnly($(this))" id="pricemin" name="pricemin" title="Harga min" placeholder="Harga min" value="{{pricemin}}">  					
-					<span class="input-group-addon" style="background-color: white;border: none;"></span> 
-					<input type="text" maxlength="12" class="form-control aabcustomsearch" onpaste="return false;" onkeypress="javascript:return isNumber(event)" onkeyup="numberOnly($(this))" id="pricemax" name="pricemax" title="Harga max" placeholder="Harga max" value="{{pricemax}}">  
+					<input type="text" maxlength="12" class="form-control aabcustomsearch hidden" onpaste="return false;" onkeypress="javascript:return isNumber(event)" onkeyup="numberOnly($(this))" id="pricemin" name="pricemin" title="Harga min" placeholder="Harga min" value="{{pricemin}}">  	
+
+					<input type="text" maxlength="12" class="form-control aabcustomhide" onpaste="return false;" onkeypress="javascript:return isNumber(event)" onkeyup="numberOnly($(this))" onblur="formatNumber('priceminformat','pricemin')" onfocus="unformatnumber('priceminformat')" id="priceminformat" title="Harga min" placeholder="Harga min" value="{{pricemin}}">
+
+					
+					<span class="input-group-addon " style="background-color: white;border: none;"></span> 
+					<input type="text" maxlength="12" class="form-control aabcustomsearch hidden" onpaste="return false;" onkeypress="javascript:return isNumber(event)" onkeyup="numberOnly($(this))" id="pricemax" name="pricemax" title="Harga max" placeholder="Harga max" value="{{pricemax}}">  
+					 
+					<input type="text" maxlength="12" class="form-control aabcustomhide" onpaste="return false;" onkeypress="javascript:return isNumber(event)" onkeyup="numberOnly($(this))" onblur="formatNumber('pricemaxformat','pricemax')" onfocus="unformatnumber('pricemaxformat')" id="pricemaxformat" title="Harga max" placeholder="Harga max" value="{{pricemax}}">  
 				</div> 
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
@@ -161,26 +172,53 @@
 								{% endfor %} 
 							<select>
 						{%else%}
-							<input type="text" class="form-control aabcustomsearch" maxlength="{{order.maxlength}}" name="{{order.attribute_name}}"  title="{{ order.name }}" placeholder="{{ order.name }}" value="{{ order.attribute_value }}">
+							<input type="text" class="form-control aabcustomsearch hidden" maxlength="{{order.maxlength}}" name="{{order.attribute_name}}"   id="{{order.attribute_name}}" title="{{ order.name }}" placeholder="{{ order.name }}" value="{{ order.attribute_value }}">
+							
+							<input type="text" class="form-control aabcustomhide" maxlength="{{order.maxlength}}" name="{{order.attribute_name}}"  
+							onblur="formatNumber('{{order.attribute_name}}format','{{order.attribute_name}}')" onfocus="unformatnumber('{{order.attribute_name}}format')"
+							id="{{order.attribute_name}}format" title="{{ order.name }}" placeholder="{{ order.name }}" value="{{ order.attribute_value }}">
 						{%endif%} 
 					</div> 
 					{%else%} 
 					<div class="form-group input-group"> 
-						<input type="text" class="form-control aabcustomsearch {{order.attribute_name}}" maxlength="{{order.maxlength}}" 
+						
+						
+						<input type="text" class="form-control aabcustomsearch hidden {{order.attribute_name}}" maxlength="{{order.maxlength}}" id="{{order.attribute_name}}min"
 						{% if order.event_text|trim|length > 0 %} onpaste="return false;" {% endif %}
 						onkeypress="{{order.event_text}}" 
 						{% if order.keyup_event_text is not null and order.keyup_event_text|trim|length > 0 %}
 							onkeyup="{{order.keyup_event_text}}"
 						{% endif %}
-						name="{{order.attribute_name}}min" isrange="{{order.isrange}}" orgiginalname="{{order.attribute_name}}" title="{{order.attribute_name}} min" placeholder="{{order.attribute_name}} min"  value="{{ order.attribute_valuemin }}">  					
+						name="{{order.attribute_name}}min" isrange="{{order.isrange}}" orgiginalname="{{order.attribute_name}}" title="{{order.attribute_name}} min" placeholder="{{order.attribute_name}} min"  value="{{ order.attribute_valuemin }}">  	
+
+
+						<input type="text" class="form-control aabcustomhide " maxlength="{{order.maxlength}}" id="{{order.attribute_name}}formatmin" onblur="formatNumber('{{order.attribute_name}}formatmin','{{order.attribute_name}}min')" onfocus="unformatnumber('{{order.attribute_name}}formatmin')"
+						{% if order.event_text|trim|length > 0 %} onpaste="return false;" {% endif %}
+						onkeypress="{{order.event_text}}" 
+						{% if order.keyup_event_text is not null and order.keyup_event_text|trim|length > 0 %}
+							onkeyup="{{order.keyup_event_text}}"
+						{% endif %}
+						  title="{{order.attribute_name}} min" placeholder="{{order.attribute_name}} min"  value="{{ order.attribute_valuemin }}"> 
+
+
+						
 						<span class="input-group-addon" style="background-color: white;border: none;"></span> 
-						<input type="text" class="form-control aabcustomsearch {{order.attribute_name}}" maxlength="{{order.maxlength}}" 
+						<input type="text" class="form-control aabcustomsearch hidden {{order.attribute_name}}" maxlength="{{order.maxlength}}" id="{{order.attribute_name}}max"
 						{% if order.event_text|trim|length > 0 %} onpaste="return false;" {% endif %}
 						onkeypress="{{order.event_text}}" 
 						{% if order.keyup_event_text is not null and order.keyup_event_text|trim|length > 0 %}
 							onkeyup="{{order.keyup_event_text}}"
 						{% endif %}
 						name="{{order.attribute_name}}max" isrange="{{order.isrange}}" orgiginalname="{{order.attribute_name}}" title="{{order.attribute_name}} max" placeholder="{{order.attribute_name}} max" value="{{ order.attribute_valuemax }}">  
+						
+						
+						<input type="text" class="form-control aabcustomhide" maxlength="{{order.maxlength}}" id="{{order.attribute_name}}formatmax" onblur="formatNumber('{{order.attribute_name}}formatmax','{{order.attribute_name}}max')" onfocus="unformatnumber('{{order.attribute_name}}formatmax')"
+						{% if order.event_text|trim|length > 0 %} onpaste="return false;" {% endif %}
+						onkeypress="{{order.event_text}}" 
+						{% if order.keyup_event_text is not null and order.keyup_event_text|trim|length > 0 %}
+							onkeyup="{{order.keyup_event_text}}"
+						{% endif %}
+						title="{{order.attribute_name}} max" placeholder="{{order.attribute_name}} max" value="{{ order.attribute_valuemax }}"> 
 					</div> 
 					{%endif%}
 					
@@ -216,6 +254,14 @@
 <script type="text/javascript"><!--
 $(document).ready(function(){
 	getPropinsi('{{ text_select }} propinsi	','{{location_propinsi}}','{{location_city}}','input-location_propinsi','input-location-kota'); 
+	$('.aabcustomhide').each(
+		function(index){  
+			var input = $(this);    
+			if($(this).val().length>0)
+			{ 
+			formatNumber($(this).attr("id"),$(this).attr("id").replace('format','')) 
+			} 
+		}); 
 });
   
  

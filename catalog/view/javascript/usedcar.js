@@ -89,7 +89,8 @@ function onCallWA(phone, name, messagenotvalid)
 		alert(messagenotvalid+" " + phone);
 		return;
 	} 
-	window.location.href="https://api.whatsapp.com/send?phone="+phone+"&text=hallo%20"+name;
+	
+	window.location.href="https://api.whatsapp.com/send?phone="+phone+"&text=Halo%20"+name+"%20saya%20melihat%20mobil%20bekas%20Anda%20dari%20Garda%20Mall%20jual%20beli%20mobil%20bekas";
 }
 function  onCallPhone(phone)
 {   
@@ -263,6 +264,44 @@ function getManufacture(useselect,idmanufacture,txtselect)
 		});
 }
 
+function unformatnumber(idformat)
+{ 
+	var number=$("#" + idformat).val();
+	$("#" + idformat).val(number.replace(/,/g, ""));
+}
+function formatNumber(idformat, idnonformat)
+{
+	var number=$("#"+idformat).val();
+	if(!isNaN(number))  
+	{ 
+		$.ajax({
+		url: 'index.php?route=account/mpmultivendor/product/numberformat',
+		dataType: 'json',
+		type: 'post', 
+		data:{
+			nominal:number
+		},
+		beforeSend: function() {
+		  $('.btn.btn-primary').button('loading');
+		},
+		complete: function() {
+		  $('.btn.btn-primary').button('reset'); 
+		},
+		success: function(json) {  
+			$("#"+idformat).val(json['data']['formating']);
+			$("#"+idnonformat).val(json['data']['nonformat']); 
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
+		});
+	}
+	else
+	{
+		$("#" + idnonformat).val($("#" + idformat).val());	
+	}
+	
+}
 
 $(document).ready(function(){
 	var onload = window.onload;

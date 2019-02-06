@@ -118,7 +118,11 @@
 								  <div class="form-group required">
 									<label class="col-sm-2 control-label" for="input-price">{{ entry_price }}</label>
 									<div class="col-sm-10">
-									  <input type="text" onpaste="return false;" onkeypress="javascript:return isNumber(event)" onkeyup = "numberOnly($(this))" name="price" value="{{ price }}" placeholder="{{ entry_price }}" id="input-price" maxlength="30" class="form-control" />
+									  <input type="text" onpaste="return false;" onkeypress="javascript:return isNumber(event)" onkeyup = "numberOnly($(this))" name="price" value="{{ price }}" placeholder="{{ entry_price }}" id="input-price" maxlength="30" class="form-control hidden" />
+									  
+									  <input type="text" onpaste="return false;" onkeypress="javascript:return isNumber(event)" onkeyup = "numberOnly($(this))"  value="{{ price }}" placeholder="{{ entry_price }}" onblur="formatNumber('input-priceformat','input-price')" onfocus="unformatnumber('input-priceformat')"  id="input-priceformat" maxlength="30" class="form-control aabcustomhide" />
+									  
+									  
 									  {% if error_price %}
 									  <div class="text-danger">{{ error_price }}</div>
 									  {% endif %}
@@ -532,10 +536,28 @@
 														ismandatory="{{order.ismandatory}}" 
 														maxlength="{{order.maxlength}}" 
 														name="product_attribute[{{ attribute_row }}][product_attribute_description][{{ language.language_id }}][text]" 
+														id="attribute-{{ attribute_row }}" 
 														rows="1" 
 														{% if order.event_text|trim|length > 0 %} onpaste="return false;" {% endif %}
 														placeholder="{{ entry_text }}" 
-														class="form-control testeag {{order.name}}">{{ product_attribute.product_attribute_description[language.language_id] ? product_attribute.product_attribute_description[language.language_id].text }}</textarea>
+														class="form-control hidden testeag {{order.name}}">{{ product_attribute.product_attribute_description[language.language_id] ? product_attribute.product_attribute_description[language.language_id].text }}</textarea>
+														
+														<textarea style="font-size:14px !important" 
+														onblur="formatNumber('attributeformat-{{ attribute_row }}','attribute-{{ attribute_row }}')" 
+														onfocus="unformatnumber('attributeformat-{{ attribute_row }}')" 
+														onkeypress="{{order.event_text}}" 
+														ismandatory="{{order.ismandatory}}" 
+														maxlength="{{order.maxlength}}" 
+														name="product_attribute[{{ attribute_row }}][product_attribute_description][{{ language.language_id }}][text]" 
+														id="attributeformat-{{ attribute_row }}" 
+														rows="1" 
+														{% if order.event_text|trim|length > 0 %} onpaste="return false;" {% endif %}
+														placeholder="{{ entry_text }}" 
+														class="form-control aabcustomhide testeag {{order.name}}">{{ product_attribute.product_attribute_description[language.language_id] ? product_attribute.product_attribute_description[language.language_id].text }}</textarea>
+														
+														
+														
+														
 														{% if order.ismandatory and error_validateattribute and (product_attribute.product_attribute_description[language.language_id].text|length==0) %}
 														<div class="text-danger ">{{order.error_description}}</div>
 														{% endif %}
@@ -574,6 +596,26 @@
 											{%else%}
 												<textarea style="font-size:14px  !important" 
 												name="product_attribute[{{ order.attribute_id-1 }}][product_attribute_description][1][text]" 
+												ismandatory="{{order.ismandatory}}" 
+												id="attributeadd-{{ order.attribute_id-1 }}" 
+												rows="1" 
+												placeholder="Text" 
+												{% if order.event_text|trim|length > 0 %} onpaste="return false;" {% endif %}
+												onkeypress="{{order.event_text}}" 
+												{% if order.keyup_event_text is not null and order.keyup_event_text|trim|length > 0 %}
+													onkeyup="{{order.keyup_event_text}}"
+												{% endif %}
+												maxlength="{{order.maxlength}}" 
+												class="form-control hidden testeag {{order.name}}"></textarea>
+												{% if order.ismandatory and error_validateattribute%}
+												<div class="text-danger ">{{order.error_description}}</div>
+												{% endif %}
+												
+												<textarea style="font-size:14px  !important" 
+												name="product_attribute[{{ order.attribute_id-1 }}][product_attribute_description][1][text]" 
+												onblur="formatNumber('attributeaddformat-{{ order.attribute_id-1 }}','attributeadd-{{ order.attribute_id-1 }}')" 
+												onfocus="unformatnumber('attributeaddformat-{{ order.attribute_id-1 }}')" 
+												id="attributeaddformat-{{ order.attribute_id-1 }}" 
 												ismandatory="{{order.ismandatory}}" 
 												rows="1" 
 												placeholder="Text" 
@@ -1155,6 +1197,17 @@
   $(document).ready(function(){
 	getManufacture('{{ manufacturer_id }}','input-manufacturer','{{ text_select }}');
 	getPropinsi('{{ text_select }}','{{location_propinsi}}','{{location_city}}','input-location_propinsi','input-location-kota'); 
+	
+	$('.aabcustomhide').each(
+		function(index){  
+			var input = $(this);    
+			if($(this).val().length>0)
+			{ 
+			formatNumber($(this).attr("id"),$(this).attr("id").replace('format','')) 
+			} 
+		}); 	
+		
+		
   });
 
 var isError=0;

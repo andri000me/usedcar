@@ -2052,4 +2052,22 @@ class ControllerAccountMpmultivendorProduct extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+	
+	public function numberformat() {
+		$nominal="";
+		if (!empty($this->request->post['nominal']))
+		{
+			$nominal=$this->request->post['nominal'];
+		}  
+		$json = array();    
+		if(!$json) { 
+			$enquiry_data = array( 
+				'formating'=>!empty($nominal)?number_format($nominal):"",
+				'nonformat'=>$nominal 
+			);    
+		} 
+		$json['data']= $enquiry_data; 
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));	
+	}
 }
